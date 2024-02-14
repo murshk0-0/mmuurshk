@@ -50,9 +50,27 @@
     <div id="message">Ты примешь мою валентинку?</div>
 </div>
 <button id="yes" class="button" onclick="location.href='https://murshk0-0.github.io/murshkk/index.html/yes.html'">Да</button>
-<button id="no" class="button" onclick="increaseYesSize()">Нет</button>
+<button id="no" class="button" onclick="changeMessage()">Нет</button>
 
 <script>
+    var phrases = [
+        "ты уверен?",
+        "может ты промахнулся?",
+        "ну пожалуйста",
+        "не разбивай мне сердце",
+        "аитю",
+        "кнопка да чуть левее",
+        "еще левее",
+        "у меня скоро закончатся фразы, просто нажми да((((((((((("
+    ];
+    var currentPhraseIndex = 0;
+
+    function changeMessage() {
+        var messageElement = document.getElementById("message");
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length; // Переходим к следующей фразе в массиве
+        messageElement.textContent = phrases[currentPhraseIndex];
+    }
+
     function increaseYesSize() {
         var yesButton = document.getElementById("yes");
         var currentSize = window.getComputedStyle(yesButton).fontSize;
